@@ -1,12 +1,11 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import {axios} from 'axios'
 
 export const getHome = createAsyncThunk(
   "/products",
-  async({rejectWithValue}) => {
+  async(_, {rejectWithValue}) => {
     try {
-      const res = await axios.get('https://dummyjson.com/products')
-      const data = await res.products
+      const res = await fetch('https://dummyjson.com/products')
+      const data = await res.json()
       return data
     } catch (error) {
       return rejectWithValue({ message: error.message });
@@ -36,6 +35,7 @@ const homeSlice = createSlice(
       })
       .addCase(getHome.rejected, (state, action) => {
         state.error = action.payload;
+        state.loading = false;
       })
     }
   }
