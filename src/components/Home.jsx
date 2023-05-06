@@ -27,28 +27,35 @@ const Home = () => {
 
   console.log(products)
   return (
-    <div>
+    <div className='m-6 px-10' >
       {
         products.products &&
         <div className='grid grid-cols-4 gap-4'>
           {
             products.products.map((product, index) => {
               return (
-                <div key={product.id}>
-                  <img src={product.thumbnail}/>
-                  <p>{product.title}</p>
-                  <p>{product.description}</p>
-                  <p className='text-[#f00]'>-{product.discountPercentage}%</p>
-                  <p>${product.price}</p>
-                  <p>{product.rating}</p>
-                  <p>{product.category}</p>
+                <div key={product.id} className='h-fit'>
+                  <div className='h-52 overflow-hidden'>
+                    <img src={product.thumbnail}/>
+                  </div>
+                  <div>
+                    <p>{product.title}</p>
+                    <p className='text-ellipsis overflow-hidden h-20'>{product.description}</p>
+                    <p className='text-[#f00]'>-{product.discountPercentage}%</p>
+                    <p>${product.price}</p>
+                    <p>Rating: {product.rating}/5</p>
+                    <p>{product.category}</p>
+                  </div>
+                  <div>
+                    <button>View Detail</button>
+                    <button>Add to Cart</button>
+                  </div>
                 </div>
               )
             })
           }
         </div>
       }
-      <div>Home</div>
     </div>
   )
 }
