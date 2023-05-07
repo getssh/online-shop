@@ -18,7 +18,7 @@ import { useEffect } from 'react';
 </div>
 </div> */}
 const Home = () => {
-  const { products } = useSelector((state) => state.products)
+  const { products, loading } = useSelector((state) => state.products)
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -28,6 +28,10 @@ const Home = () => {
   console.log(products)
   return (
     <div className='m-6 px-10 text-[#4E4C67]' >
+      {
+        loading &&
+        <div>Loading...</div>
+      }
       {
         products.products &&
         <div className='grid grid md:grid-cols-2 lg:grid-cols-4 gap-4 gap-y-6'>
@@ -46,7 +50,7 @@ const Home = () => {
                     <p>Rating: {product.rating}/5</p>
                     <p>{product.category}</p>
                   </div>
-                  <div className='flex justify-center gap-x-1 text-gray'>
+                  <div className='flex justify-around sm:flex-wrap sm:gap-y-1'>
                     <button className='bg-[#EF6F6C] font-semibold text-white'>View Detail</button>
                     <button className='bg-[#12355B] font-semibold text-white'>Add to Cart</button>
                   </div>
