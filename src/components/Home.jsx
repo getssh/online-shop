@@ -38,7 +38,7 @@ const Home = () => {
           {
             products.products.map((product) => {
               return (
-                <div key={product.id} className='h-fit bg-[#EAFFFD] p-2'>
+                <div key={product.id} className='h-fit bg-[#EAFFFD] p-2 drop-shadow-md'>
                   <div className='h-52 overflow-hidden'>
                     <img src={product.thumbnail}/>
                   </div>

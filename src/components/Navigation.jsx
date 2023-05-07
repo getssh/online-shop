@@ -3,11 +3,11 @@ import ShopLogo from '../assets/shoplogo.png'
 
 const Navigation = () => {
   return (
-    <div className='flex justify-between items-center pr-20 p-5 bg-[#C9F0FF]'>
+    <div className='flex flex-wrap justify-between items-center px-20 py-5 bg-[#C9F0FF]'>
       <div className='h-20 -mt-6 mb-3'>
         <img src={ShopLogo} />
       </div>
-      <div className='flex justify-end gap-x-5 bg-[#C9F0FF]'>
+      <div className='flex justify-end gap-x-6 bg-[#C9F0FF]'>
         <Link className='text-[#12355B] font-semibold' to="/">Home</Link>
         <Link className='text-[#12355B] font-semibold' to="/category">Category</Link>
         <Link className='text-[#12355B] font-semibold' to="/cart">
