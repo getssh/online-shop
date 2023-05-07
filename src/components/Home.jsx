@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { getHome } from '../redux/homeSlice';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 {/* <div>
 <div className="flex">
@@ -27,28 +27,28 @@ const Home = () => {
 
   console.log(products)
   return (
-    <div className='m-6 px-10' >
+    <div className='m-6 px-10 text-[#4E4C67]' >
       {
         products.products &&
-        <div className='grid grid-cols-4 gap-4'>
+        <div className='grid grid md:grid-cols-2 lg:grid-cols-4 gap-4 gap-y-6'>
           {
-            products.products.map((product, index) => {
+            products.products.map((product) => {
               return (
-                <div key={product.id} className='h-fit'>
+                <div key={product.id} className='h-fit bg-[#EAFFFD] p-2'>
                   <div className='h-52 overflow-hidden'>
                     <img src={product.thumbnail}/>
                   </div>
                   <div>
-                    <p>{product.title}</p>
+                    <p className='font-bold text-ellipsis overflow-hidden h-14'>{product.title}</p>
                     <p className='text-ellipsis overflow-hidden h-20'>{product.description}</p>
-                    <p className='text-[#f00]'>-{product.discountPercentage}%</p>
+                    <p className='text-[#f00]'>{product.discountPercentage}% off</p>
                     <p>${product.price}</p>
                     <p>Rating: {product.rating}/5</p>
                     <p>{product.category}</p>
                   </div>
-                  <div>
-                    <button>View Detail</button>
-                    <button>Add to Cart</button>
+                  <div className='flex justify-center gap-x-1 text-gray'>
+                    <button className='bg-[#EF6F6C] font-semibold text-white'>View Detail</button>
+                    <button className='bg-[#12355B] font-semibold text-white'>Add to Cart</button>
                   </div>
                 </div>
               )
