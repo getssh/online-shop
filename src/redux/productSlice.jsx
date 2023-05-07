@@ -1,7 +1,7 @@
 import {createSlice, createAsyncThunk} from '@reduxjs/toolkit'
 
 export const getProduct = createAsyncThunk(
-  '/products/id',
+  '/id',
   async(productId, {rejectWithValue}) => {
     try {
       const res = await fetch(`https://dummyjson.com/products/${productId}`)
