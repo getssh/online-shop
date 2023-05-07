@@ -1,6 +1,6 @@
 import {createSlice, createAsyncThunk} from '@reduxjs/toolkit'
 
-const getProduct = createAsyncThunk(
+export const getProduct = createAsyncThunk(
   '/products/id',
   async(productId, {rejectWithValue}) => {
     try {
@@ -14,3 +14,31 @@ const getProduct = createAsyncThunk(
   }
 )
 
+const initialState = {
+  loading: false,
+  product: {},
+  error: null
+}
+
+const productSlice = createSlice(
+  {
+    name: "product",
+    initialState,
+    reducers: {},
+    extraReducers: (builder) => {
+      builder
+      .addCase(getProduct.pending, (state) => {
+        state.loading = true
+      })
+      .addCase(getProduct.fulfilled, (state, action) => {
+        state.loading = false
+        state.product = action.payload
+      })
+      .addCase(getProduct.rejected, (state, action) => {
+        state.error = action.payload
+      })
+    }
+  }
+)
+
+export default productSlice.reducer;
