@@ -22,6 +22,7 @@ const cartSlice = createSlice(
         state.totalPrice = total;
       },
       removeItem: (state, action) => {
+	      //fix the logic so that it work properly
         state.items = state.items.filter((item) => {
           return item.id == action.payload;
         })
